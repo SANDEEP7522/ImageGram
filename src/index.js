@@ -5,7 +5,13 @@ import { creatPost } from './controllers/postController.js';
 const PORT = 3000;
 const app = express();
 
+app.use(express.json());
+app.use(express.text());
+app.use(express.urlencoded())
+
 app.get('/ping', (req, res) => {
+    console.log(req.query);
+    console.log(req.body);
     return res.json({ message: 'Pong' })
  })
 
@@ -24,7 +30,7 @@ app.get('/ping', (req, res) => {
 //     next();
 //  }            
 //                          [m1, m2, m3],
- app.post('/posts',                             creatPost);
+ app.post('/posts',     s3uploader.single() ,             creatPost);
  
 app.listen(PORT, () => {
     console.log(`Server is running port nnumber: ${ PORT }`);
