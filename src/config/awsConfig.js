@@ -1,3 +1,4 @@
+
 import AWS from 'aws-sdk';
 import { AWS_ACCESS_KEY_ID, AWS_REGION, AWS_SECRET_ACCESS_KEY } from './severConfig.js';
 
@@ -9,4 +10,4 @@ const s3 = new AWS.S3({
     
 })
 
-export default s3;
+export { s3 };

@@ -1,11 +1,7 @@
 import dotenv from 'dotenv';
-
 dotenv.config();
 
-export const DB_URL = process.env.DB_URL;
-
-
-// actualy key is not ableble becaue, I have no AWS account
+export const DB_URL =  process.env.DB_URL;
 
 export const AWS_ACCESS_KEY_ID =  process.env.AWS_ACCESS_KEY_ID;
 
