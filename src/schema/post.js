@@ -1,5 +1,4 @@
- import { type } from "express/lib/response";
-import { type } from "express/lib/response";
+
 import mongoose from "mongoose";
 
 const postSchema = new mongoose.Schema({
