@@ -15,3 +15,11 @@ export async function creatPost(req, res) {
     data: post
 });
 }
+
+// dam controller 
+export async function getAllPosts(req, res) {
+  return res.status(505).json({
+    success: false,
+    message: "not implemented"
+  });
+}
