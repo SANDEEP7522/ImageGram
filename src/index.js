@@ -1,6 +1,6 @@
 import express from 'express';
 import connectDB from './config/dbConfig.js';
-import postRouter  from "./routers/post.js";
+//import postRouter  from "./routers/post.js";
 import apiRouter from './routers/apiRouter.js'
   
 
@@ -11,7 +11,7 @@ const app = express();
  app.use(express.text());
  app.use(express.urlencoded())
 
- app.use('/api/v1', apiRouter); // if the url start with /api then the request is forworded to the apiRouter
+ app.use('/api', apiRouter); // if the url start with /api then the request is forworded to the apiRouter
 
 app.get('/ping', (req, res) => {
     console.log(req.query);

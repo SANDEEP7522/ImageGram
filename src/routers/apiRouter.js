@@ -1,13 +1,12 @@
 
 import express from 'express';
-import postRouter from './post.js'
-import userRouter from './user.js'
+import v1Ruter from './v1/v1Router.js'
+import v2Ruter from './v2/v2Router.js'
 
 
 const router = express.Router();
 
-router.use('/posts', postRouter); // if in the post routing url i.e. after /api, we have the url starting  with /post, then request is forworded to postRouter
-
-router.use('/users', userRouter);// if in the user routing url i.e. after /api, we have the url starting  with /user, then request is forworded to userRouter
+router.use('/v1', v1Ruter)
+router.use('/v2', v2Ruter)
 
 export default router;
