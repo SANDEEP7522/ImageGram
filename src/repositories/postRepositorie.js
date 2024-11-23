@@ -39,9 +39,9 @@ export const findPostById = async (id) => {
   }
 };
 
-export const deletePostBYId = async (id) => {
+export const deletePostById = async (id) => {
   try {
-    const post = await Post.deletePostBYId(id);
+    const post = await Post.findByIdAndDelete(id);
     return post;
   } catch (error) {
     console.log(error);

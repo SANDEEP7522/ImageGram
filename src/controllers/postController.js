@@ -1,5 +1,6 @@
 import {
   createPostService,
+  deletePostService,
   getAllPostsServices,
 } from "../services/postService.js";
 
@@ -34,9 +35,34 @@ export async function getAllPosts(req, res) {
       message: " All post fetched successfully",
       data: paginatedPosts,
     });
-  } 
-  catch (error) {
+  } catch (error) {
     console.log("Error from getAllPost", error);
+    return res.status(500).json({
+      success: false,
+      message: "Internal Server Error",
+    });
+  }
+}
+
+export async function deletePost(req, res) {
+  try {
+    const postId = req.params.id; // It allows you to access dynamic parts of the URL (you the id parameter from the route).
+    const response = await deletePostService(postId);
+
+    if (!response) {
+      return res.status(404).json({
+        success: false,
+        message: "not found post",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Post deleted successfully",
+      data: response,
+    });
+  } catch (error) {
+    console.log(error);
     return res.status(500).json({
       success: false,
       message: "Internal Server Error",
