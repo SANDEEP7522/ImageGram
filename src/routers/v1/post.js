@@ -7,8 +7,8 @@ import { s3uploader } from '../../config/multerConfig.js';
 
 const router = express.Router();// router object to modularsize the routes
 
-router.post('/posts',  s3uploader.single('image') , creatPost);
+router.post('/',  s3uploader.single('image') , creatPost);
 
-router.get('/posts', getAllPosts)
+router.get('/', getAllPosts)
 
 export default router;
