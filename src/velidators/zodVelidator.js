@@ -1,7 +1,7 @@
 export const validate = (schema) => {
   return async (req, res, next) => {
     try {
-        console.log("req Body",req.body);
+       //  console.log("req Body 01",req.body);
         
       schema.parse(req.body);
       next();
