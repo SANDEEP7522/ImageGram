@@ -9,7 +9,14 @@ export async function creatPost(req, res) {
   console.log(req.file);
   // call the service layer function
 
-  const post = createPostService({
+  if (!req.file || !req.file.location) {
+    return res.status(400).json({
+      success: false,
+      message: "Image is required",
+    });
+  }
+
+  const post = await createPostService({
     caption: req.body.caption,
     image: req.file.location,
   });
@@ -73,18 +80,17 @@ export async function deletePost(req, res) {
 
 export async function updatePost(req, res) {
   try {
-   // console.log("req file", req.file);
+    // console.log("req file", req.file);
     const updateObject = req.body;
     if (req.file) {
       updateObject.image = req.file.location;
-
     }
     const response = await updatePostService(req.params.id, updateObject);
     return res.status(200).json({
-      success: true, 
+      success: true,
       message: "Post updated successfully",
-      data: response
-    })
+      data: response,
+    });
   } catch (error) {
     console.log(error);
     return res.status(500).json({
@@ -92,5 +98,4 @@ export async function updatePost(req, res) {
       message: "Internal Server Error",
     });
   }
-
 }
