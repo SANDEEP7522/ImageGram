@@ -6,6 +6,7 @@ import {
   creatPost,
   deletePost,
   getAllPosts,
+  updatePost,
 } from "../../controllers/postController.js";
 import { s3uploader } from "../../config/multerConfig.js";
 
@@ -16,5 +17,7 @@ router.post("/", s3uploader.single("image"), creatPost);
 router.get("/", getAllPosts);
 
 router.delete("/:id", deletePost);
+
+router.put("/:id", s3uploader.single('image'), updatePost)
 
 export default router;
