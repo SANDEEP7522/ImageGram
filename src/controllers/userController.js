@@ -34,24 +34,24 @@ export async function signup(req, res) {
 }
 
 export async function signin(req, res) {
-  try {
-    const response = await signinUserService(req.body);
-    return res.status(200).json({
-      success: true,
-      message: "User signed is successfully",
-      data: response,
-    });
-  } catch (error) {
-    console.log(error);
-    if (error.status) {
-      return res.status(error.sataus).json({
-        success: false,
-        message: error.message,
-      });
+    try {
+        const response = await signinUserService(req.body);
+        return res.status(200).json({
+            success: true,
+            message: "User signed in successfully",
+            data: response
+        });
+    } catch(error) {
+        console.log(error);
+        if(error.status) {
+            return res.status(error.status).json({
+                success: false,
+                message: error.message
+            })
+        }
+        return res.status(500).json({
+            success: false,
+            message: "Internal Server Error"
+        });
     }
-    return res.sataus(500).json({
-      success: false,
-      message: "Internal Server Error",
-    });
-  }
 }
