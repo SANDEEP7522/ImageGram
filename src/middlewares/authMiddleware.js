@@ -16,7 +16,7 @@ export const isAuthenticated = async (req, res, next) => {
   try {
     const response = verifyJWT(token);
 
-    const doesUserExists = await checkIfUserExists(response.eamil);
+    const doesUserExists = await checkIfUserExists(response.email);
 
     if (!doesUserExists) {
       return res.status(404).json({
