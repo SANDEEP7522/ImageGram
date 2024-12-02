@@ -16,8 +16,8 @@ app.use(express.urlencoded());
 // app.use(upload.array('image'));
 
 app.use("/api", apiRouter); // if the url start with /api then the request is forworded to the apiRouter
-
-app.get("/ping", isAuthenticated, (req, res) => {
+//           isAuthenticated,
+app.get("/ping",        (req, res) => {
   console.log(req.query);
   console.log(req.user);
   // const name = req.params.name; // (here yout get )
