@@ -5,9 +5,20 @@ import apiRouter from "./routers/apiRouter.js";
 import multer from "multer";
 import { isAuthenticated } from "./middlewares/authMiddleware.js";
 import ip from "ip"
+import rateLimiter from "express-rate-limit"
 
 const PORT = process.env.PORT || 8000;
 const app = express();
+
+
+const limiter = rateLimiter({
+  windowMs: 1 * 60 * 1000, // only for one minute
+  max: 5, // limit each Ip to 5 requests per windoes
+  message: "Too many requested from this Ip, plese try again after 01 minute",
+
+})
+
+app.use(limiter);
 
 const upload = multer();
 
