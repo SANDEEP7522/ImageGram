@@ -14,7 +14,7 @@ export const createPostService = async (createPostObject) => {
   return post;
 };
 
-export const getAllPostsServices = async (offset, limit) => {
+export const getAllPostsService = async (offset, limit) => {
   const posts = await findAllPost(offset, limit);
 
   // calculate total number of posts and total number of pages

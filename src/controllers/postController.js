@@ -1,7 +1,7 @@
 import {
   createPostService,
   deletePostService,
-  getAllPostsServices,
+  getAllPostsService,
   updatePostService,
 } from "../services/postService.js";
 
@@ -35,8 +35,13 @@ export async function getAllPosts(req, res) {
     const offset = req.query.offset || 0; // when u go other page then like un show
 
     // it's provid the paginated post services
-    const paginatedPosts = await getAllPostsServices(offset, limit);
-
+    const paginatedPosts = await getAllPostsService(offset, limit);
+    if (!paginatedPosts) {
+      return res.status(404).json({
+        success: false,
+        message: "No posts found",
+      });
+    }
     // for responce
     return res.status(200).json({
       success: true,
